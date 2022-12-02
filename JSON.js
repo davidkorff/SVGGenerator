@@ -1,0 +1,43 @@
+template1 = {
+  "Template":{
+    "MaxTemplate":{
+				"Height":251.92,
+				"Width":232.96
+			},
+		"PersonalizedObjects":[
+			{"PersonalizedObject":{
+				"ObjectType":"IMG",
+				"ObjectContent":{
+					"Text":"David",
+					"Font":"Arial",
+					"FontColor":"050505",
+					"FontSize":10,
+					"imageURL":"https://printify.com/wp-content/uploads/2021/03/swagrabbit_logo.png"
+				},
+				"ObjectLocation":{
+					"ObjectHeight":50,
+					"ObjectWidth":60,
+					"ObjectXOffset":35,
+					"ObjectYOffset":25
+				}
+			}},
+			{"PersonalizedObject":{
+				"ObjectType":"Text",
+				"ObjectContent":{
+					"Text":"David",
+					"Font":"Arial",
+					"FontColor":"050505",
+					"FontSize":10,
+					"imageURL":"https://printify.com/wp-content/uploads/2021/03/swagrabbit_logo.png"
+				},
+				"ObjectLocation":{
+					"ObjectHeight":50,
+					"ObjectWidth":60,
+					"ObjectXOffset":75,
+					"ObjectYOffset":25
+				}
+		}}
+		]
+
+}
+}
