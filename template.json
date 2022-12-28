@@ -1,0 +1,24 @@
+{
+  "width": 800,
+  "height": 600,
+  "background": "#FFFFFF",
+  "elements": [
+    {
+      "type": "image",
+      "x": 10,
+      "y": 10,
+      "width": 100,
+      "height": 100,
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png"
+    },
+    {
+      "type": "text",
+      "x": 120,
+      "y": 10,
+      "font": "Arial",
+      "fontSize": 1100,
+      "color": "#0f0000",
+      "text": "Hellewtweorld!"
+    }
+  ]
+}

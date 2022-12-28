@@ -6,6 +6,30 @@
   </head>
   <body>
     <script type="text/javascript" src='svg.js'></script>
-
+<canvas id="canvas" width="800" height="400"></canvas>
+<div id="png-container"></div>
   </body>
 </html>
+<svg width="251.92" height="232.96" class="svgTemplate"><rect height="232.96" width="251.92" style="stroke:black;stroke-width:5;fill-opacity:0.0"><g></rect><image href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png" x="35" y="35" width="35" height="35"></image><text x="75" y="80" width="60" height="50" font-size="55" font-family="Arial">david</text></g></svg>
+
+
+<!-- <script type="text/javascript">
+  window.addEventListener("load", function() {
+    var svgString = new XMLSerializer().serializeToString(document.querySelector('svg'));
+
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+    var DOMURL = self.URL || self.webkitURL || self;
+    var img = new Image();
+    var svg = new Blob([svgString], {type: "image/svg+xml;charset=utf-8"});
+    var url = DOMURL.createObjectURL(svg);
+    img.onload = function() {
+        ctx.drawImage(img, 0, 0);
+        var png = canvas.toDataURL("image/png");
+        document.querySelector('#png-container').innerHTML = '<img src="'+png+'"/>';
+        DOMURL.revokeObjectURL(png);
+    };
+    img.src = url;
+
+  });
+</script> --> -->

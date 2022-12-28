@@ -40,13 +40,13 @@ function createPageElement(elementType, customAttributeArray, elementClasses, pa
 function initializeSVG(template){
   var templateWidth = template.Template.MaxTemplate.Height*mmToPxConv
   var templateHeight = template.Template.MaxTemplate.Width*mmToPxConv
-  
+
   var svg = createPageElement("svg",
   [{"width":templateWidth},{"height":templateHeight}],
   ["svgTemplate"],
   document.body
 )
-  
+
   // add a border
   if(true){
     svgBorder = document.createElementNS("http://www.w3.org/2000/svg", 'rect');
@@ -55,13 +55,13 @@ function initializeSVG(template){
     svgBorder.setAttribute("style","stroke:black;stroke-width:5;fill-opacity:0.0")
     svg.appendChild(svgBorder)
   }
-  
+
   var personalizedObjectArray = template.Template.PersonalizedObjects
-  
+
   for (var i = 0; i < personalizedObjectArray.length; i++) {
     applyAssets(personalizedObjectArray[i].PersonalizedObject)
-  } 
-    
+  }
+
 
 
     function applyAssets(personalizedObject){
@@ -71,10 +71,10 @@ function initializeSVG(template){
       // debugger
       var objectXOffset = personalizedObject.ObjectLocation.ObjectXOffset*mmToPxConv
       var objectYOffset = personalizedObject.ObjectLocation.ObjectYOffset*mmToPxConv
-      
+
       var objectFontSize = personalizedObject.ObjectContent.FontSize*mmToPxConv
-      
-      
+
+
       if(personalizedObject.ObjectType == "IMG"){
         var imageField = createPageElement("image",
           [{"href":personalizedObject.ObjectContent.imageURL},{x:objectXOffset},{y:objectYOffset},{"width":objectWidth},{"height":objectHeigth}],
@@ -97,22 +97,40 @@ function initializeSVG(template){
         textField.innerHTML = personalizedObject.ObjectContent.Text
         textField.setAttributeNS(null, "font-size", personalizedObject.ObjectContent.FontSize);
         textField.setAttributeNS(null, "font-family", personalizedObject.ObjectContent.Font);
-        
+
       }
-      
-    
-    
-    //   svgPersonalizedeElement.setAttributeNS(null, "y", (personalizedObject.ObjectSpecs.ObjectYOffset+parseFloat(decoAreaGroup.getAttribute("y")))+personalizedObject.FontSize);
-    //   svgPersonalizedeElement.setAttributeNS(null, "font-size", personalizedObject.FontSize);
-    //   svgPersonalizedeElement.setAttributeNS(null, "font-family", personalizedObject.Font);
-    //   svgPersonalizedeElement.setAttribute("id", `PersonalizedObjectID${personalizedObject.PersonalizedObjectID}`)
-    //   svgPersonalizedeElement.setAttribute("data-personalizedobjectid",personalizedObject.PersonalizedObjectID)
-    // 
-    //   // debugger
-    //   svgPersonalizedeElement.innerHTML = personalizedObject.Text
-    //   personalizedObjectGroup.appendChild(svgPersonalizedeElement)
-    // }
+
+
+
     }
-    
-  
+
+  //   fs.writeFile('index.svg', document.querySelector(".svgTemplate"), (err) => {
+  //     // throws an error, you could also catch it here
+  //     if (err) throw err;
+  //
+  //     // success case, the file was saved
+  //     console.log('SVG written!');
+  // });
+  var canvas = document.createElement('canvas');
+  var parser = new DOMParser();
+  var svg = document.querySelector(".svgTemplate");
+  var svgjs = require('svg.js');
+var vectorizedSvg = svgjs(canvas);
+
+var images = svg.getElementsByTagName('image');
+for (var i = 0; i < images.length; i++) {
+  var image = images[i];
+  var imageSrc = image.getAttribute('xlink:href');
+  var imageVector = svgjs.image(imageSrc);
+  vectorizedSvg.add(imageVector);
+}
+
+var pngImage = canvas.toDataURL();
+document.body.appendChild(pngImage);
+
+// or
+
+var fs = require('fs');
+fs.writeFileSync('vectorized.png', pngImage);
+
 }
