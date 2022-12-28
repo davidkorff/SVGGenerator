@@ -62,13 +62,6 @@ for personalized_object in data['Template']['PersonalizedObjects']:
         # Draw the text onto the image
         draw.text((obj_x_offset, obj_y_offset), obj_content['Text'], fill=font_color, font=font)
 
-# Calculate the width and height in pixels at 300 DPI
-width_pixels = int(float(data['Template']['MaxTemplate']['Width'])/pxToMillConv * 300 / 25.4)
-height_pixels = int(float(data['Template']['MaxTemplate']['Height'])/pxToMillConv * 300 / 25.4)
-
-# Resize the image to the specified dimensions
-template_image = template_image.resize((width_pixels, height_pixels), Image.ANTIALIAS)
-
-# Save the image as a PNG file at 300 DPI
-template_image.save('template.png', dpi=(300, 300))
+# Save the image as a PNG file
+template_image.save('template.png')
 
