@@ -63,5 +63,6 @@ for personalized_object in data['Template']['PersonalizedObjects']:
         draw.text((obj_x_offset, obj_y_offset), obj_content['Text'], fill=font_color, font=font)
 
 # Save the image as a PNG file
-template_image.save('template.png')
+template_image.save('template.png', dpi=(300, 300))
+
 
