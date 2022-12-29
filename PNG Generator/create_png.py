@@ -1,17 +1,19 @@
 import json
 from PIL import Image, ImageDraw, ImageFont
 
+
+
 pxToMillConv = 0.084666667
 
 # Open the JSON file and read the contents
 with open('Art.json') as f:
     data = json.load(f)
 
+
+
 # Get the dimensions of the template image from the "MaxTemplate" object
 template_width = int(float(data['Template']['MaxTemplate']['Width'])/pxToMillConv)
-print(template_width)
 template_height = int(float(data['Template']['MaxTemplate']['Height'])/pxToMillConv)
-print(template_height)
 
 # Create a new image with the specified dimensions and a transparent background
 template_image = Image.new(mode='RGBA', size=(template_width, template_height), color = (255, 255, 255, 0))
